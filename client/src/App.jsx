@@ -4,6 +4,9 @@ import { NoPage } from './pages/NoPage';
 import { BasicLayout } from './layout/BasicLayout';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
+import { Dashboard } from './pages/Dashboard';
+import { UserLayout } from './layout/UserLayout';
+import { Movies } from './pages/Movies';
 
 function App() {
   return (
@@ -13,6 +16,14 @@ function App() {
           <Route index path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+        </Route>
+
+        <Route Component={UserLayout}>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/movies' element={<Movies />} />
+        </Route>
+
+        <Route Component={BasicLayout}>
           <Route path='*' element={<NoPage />} />
         </Route>
       </Routes>
