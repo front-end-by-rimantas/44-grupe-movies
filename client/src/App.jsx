@@ -7,27 +7,30 @@ import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { UserLayout } from './layout/UserLayout';
 import { Movies } from './pages/Movies';
+import { UserContextProvider } from './context/UserContext';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={BasicLayout}>
-          <Route index path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-        </Route>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route Component={BasicLayout}>
+            <Route index path='/' element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+          </Route>
 
-        <Route Component={UserLayout}>
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/movies' element={<Movies />} />
-        </Route>
+          <Route Component={UserLayout}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/movies' element={<Movies />} />
+          </Route>
 
-        <Route Component={BasicLayout}>
-          <Route path='*' element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route Component={BasicLayout}>
+            <Route path='*' element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
   );
 }
 
